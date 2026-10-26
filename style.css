@@ -42,39 +42,35 @@ body {
 }
 
 #ButtonColor {
-    width: 12vw;            /* Largura responsiva um pouco maior para acomodar texto se precisar */
-    min-width: 120px;       /* Garante que ele não suma em telas muito pequenas */
+    width: 12vw;
+    min-width: 120px;
     height: 5vw;
-    min-height: 45px;       /* Garante uma altura mínima confortável para o clique */
+    min-height: 45px;
     
     background-color: white;
-    color: #1a1a1a;         /* Cor do texto escura para contrastar com o fundo branco */
+    color: #1a1a1a;
     
-    border: 2px solid black; /* Borda preta elegante e fina */
-    border-radius: 8px;     /* Bordas levemente arredondadas (melhor que usar %) */
+    border: 2px solid black;
+    border-radius: 8px;
     
-    font-weight: bold;      /* Texto em negrito para destacar */
-    cursor: pointer;        /* Transforma o mouse na mãozinha de clique */
+    font-weight: bold;
+    cursor: pointer;
     
-    /* Suaviza as transições de tamanho e sombra */
     transition: transform 0.1s ease, box-shadow 0.1s ease; 
     
-    /* Sombra leve para dar profundidade de objeto "clicável" */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     
     margin-top: 2%;
     margin-left: 1%;
 }
 
-/* Efeito quando o usuário passa o mouse por cima (Hover) */
 #ButtonColor:hover {
-    background-color: #f9f9f9; /* Muda sutilmente para um branco gelo */
-    transform: translateY(-2px); /* Sobe de leve o botão */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Aumenta a sombra criando efeito de flutuação */
+    background-color: #f9f9f9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* O Efeito "POP" quando o botão é clicado (Active) */
 #ButtonColor:active {
-    transform: scale(0.95); /* Diminui ligeiramente de tamanho (efeito de afundar) */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra diminui simulando o toque no chão */
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
