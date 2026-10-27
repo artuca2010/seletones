@@ -1,5 +1,6 @@
 const ButtonColor = document.getElementById('ButtonColor');
-const ButtonMove = document.getElementById('Move')
+const ButtonMoveLeft = document.getElementById('MoveLeft');
+const ButtonMoveRight = document.getElementById('MoveRight'); // Adicionado
 const Cuby = document.getElementById('Cuby');
 
 const CubyColors = {
@@ -11,7 +12,6 @@ const CubyColors = {
 
 ButtonColor.addEventListener('click', () => {
   const colorsArray = Object.values(CubyColors);
-    
   const randomColorObj = colorsArray[Math.floor(Math.random() * colorsArray.length)];
     
   Cuby.style.backgroundColor = randomColorObj.bg;
@@ -20,17 +20,25 @@ ButtonColor.addEventListener('click', () => {
 
 let ActualPos = 0;
 
-ButtonMove.addEventListener('click', () => {
-    const novaPosicao = ActualPos + 2; 
-
+function moverCuby(novaPosicao) {
     Cuby.animate([
         { transform: `translateX(${ActualPos}vw)` },
         { transform: `translateX(${novaPosicao}vw)` }
     ], {
-        duration: 300
+        duration: 300, // Vírgula corrigida aqui
         easing: 'ease-in-out',
         fill: 'forwards'
     });
 
     ActualPos = novaPosicao;
+}
+
+ButtonMoveLeft.addEventListener('click', () => {
+    const novaPosicao = ActualPos - 2; 
+    moverCuby(novaPosicao);
+});
+
+ButtonMoveRight.addEventListener('click', () => {
+    const novaPosicao = ActualPos + 2; 
+    moverCuby(novaPosicao);
 });
