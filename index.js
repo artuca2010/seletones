@@ -1,6 +1,8 @@
 const ButtonColor = document.getElementById('ButtonColor');
 const ButtonMoveLeft = document.getElementById('MoveLeft');
-const ButtonMoveRight = document.getElementById('MoveRight'); // Adicionado
+const ButtonMoveRight = document.getElementById('MoveRight');
+const ButtonMoveFoward = document.getElementById('MoveFoward');
+const ButtonMoveBack = document.getElementById('MoveBack');
 const Cuby = document.getElementById('Cuby');
 
 const CubyColors = {
@@ -13,32 +15,57 @@ const CubyColors = {
 ButtonColor.addEventListener('click', () => {
   const colorsArray = Object.values(CubyColors);
   const randomColorObj = colorsArray[Math.floor(Math.random() * colorsArray.length)];
-    
   Cuby.style.backgroundColor = randomColorObj.bg;
   Cuby.style.boxShadow = randomColorObj.shadow;
 });
 
-let ActualPos = 0;
+let ActualPosX = 0;
+let ActualPosY = 0;
 
-function moverCuby(novaPosicao) {
-    Cuby.animate([
-        { transform: `translateX(${ActualPos}vw)` },
-        { transform: `translateX(${novaPosicao}vw)` }
-    ], {
-        duration: 300, // Vírgula corrigida aqui
-        easing: 'ease-in-out',
-        fill: 'forwards'
-    });
+function moverCuby(novaPosicaoX, novaPosicaoY) {
+  Cuby.animate([
+    { transform: `translate(${ActualPosX}vw, ${ActualPosY}vw)` },
+    { transform: `translate(${novaPosicaoX}vw, ${novaPosicaoY}vw)` }
+  ], {
+    duration: 300,
+    easing: 'ease-in-out',
+    fill: 'forwards'
+  });
 
-    ActualPos = novaPosicao;
+  ActualPosX = novaPosicaoX;
+  ActualPosY = novaPosicaoY;
 }
 
 ButtonMoveLeft.addEventListener('click', () => {
-    const novaPosicao = ActualPos - 2; 
-    moverCuby(novaPosicao);
+  const novaPosicaoX = ActualPosX - 2;
+  moverCuby(novaPosicaoX, ActualPosY);
 });
 
 ButtonMoveRight.addEventListener('click', () => {
-    const novaPosicao = ActualPos + 2; 
-    moverCuby(novaPosicao);
+  const novaPosicaoX = ActualPosX + 2;
+  moverCuby(novaPosicaoX, ActualPosY);
+});
+
+ButtonMoveFoward.addEventListener('click', () => {
+  const novaPosicaoY = ActualPosY - 2; 
+  moverCuby(ActualPosX, novaPosicaoY);
+});
+
+ButtonMoveBack.addEventListener('click', () => {
+  const novaPosicaoY = ActualPosY + 2; 
+  moverCuby(ActualPosX, novaPosicaoY);
+});
+
+window.addEventListener('keydown', (event) => {
+    const tecla = event.key.toUpperCase(); 
+
+    if (tecla === 'W') {
+        ButtonMoveFoward.click();
+    } else if (tecla === 'S') {
+        ButtonMoveBack.click();
+    } else if (tecla === 'A') {
+        ButtonMoveLeft.click();
+    } else if (tecla === 'D') {
+        ButtonMoveRight.click();
+    }
 });

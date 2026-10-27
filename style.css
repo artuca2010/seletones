@@ -40,8 +40,8 @@ body {
   margin-left: 2%;
 }
 
-#ButtonColor, #MoveLeft, #MoveRight {
-    width: 12vw;
+#ButtonColor, #MoveLeft, #MoveRight, #MoveFoward, #MoveBack {
+    width: 2vw;
     min-width: 120px;
     height: 5vw;
     min-height: 45px;
@@ -63,13 +63,13 @@ body {
     margin-left: 1%;
 }
 
-#ButtonColor:hover, #MoveLeft:hover, #MoveRight:hover {
+#ButtonColor:hover, #MoveLeft:hover, #MoveRight:hover, #MoveFoward:hover, #MoveBack:hover {
     background-color: #f9f9f9;
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-#ButtonColor:active, #MoveLeft:active, #MoveRight:active {
+#ButtonColor:active, #MoveLeft:active, #MoveRight:active, #MoveFoward:active, #MoveBack:active {
     transform: scale(0.95);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
